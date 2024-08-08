@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    height: 700px;
+    width: 700px;
+    border: 2px solid black;
+    justify-content: space-between; /* Evenly distributes children horizontally */
+    align-items: stretch; /* Ensures children stretch to fill the parent's height */
+};
+
+
+
