@@ -4,7 +4,8 @@
     border: 2px solid black;
     width: 700px;
     height: 700px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    background-color: white;
 };
 
 html, body {
@@ -20,10 +21,35 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    background-color: bisque;
 }
 
 button {
+    font-size: 16px;
     margin: 5px;
+    cursor: pointer;
+}
+
+#blu {
+    color: blue;
+}
+
+#red {
+    color: red;
+}
+
+#setSize {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#reset {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 .pixel {
