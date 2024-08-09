@@ -8,7 +8,7 @@ const blu = document.querySelector("#blu");
 const rd = document.querySelector("#red");
 
 function getSqNum () {
-    sqNum = parseInt(prompt("Set size! (Input a number from 2 to 100)"));
+    sqNum = parseInt(prompt("Set number of pixels! Up to 100 only)"));
     console.log("Number of squares:", sqNum);
 }
 
