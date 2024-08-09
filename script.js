@@ -1,31 +1,73 @@
 let sqNum;
-let sq;
-let pad = document.querySelector(".container");
-let reset = document.querySelector("#reset")
+let pixel;
+const pad = document.querySelector(".container");
+const reset = document.querySelector("#reset");
+const setSize = document.querySelector("#setSize");
+const blk = document.querySelector("#blk");
+const blu = document.querySelector("#blu");
+const rd = document.querySelector("#red");
 
 function getSqNum () {
-    sqNum = prompt("Set size! (Input a number from 2 to 100)")
-};
-
-function makeSq () {
-    sq = document.createElement("div");
-    sq.classList.add("pixel");
-    sq.style.height = "16px";
-    sq.style.width = "16px";
-    sq.style.border = "2px solid black";
-    sq.style.display = "flex";
-    sq.style.flex = "auto";
-    sq.setAttribute("style", "flex: 1 1 50%; box-sizing: border-box; border: 2px solid black; display: flex; justify-content: center; align-items: center;")
-    pad.appendChild(sq);
+    sqNum = parseInt(prompt("Set size! (Input a number from 2 to 100)"));
+    console.log("Number of squares:", sqNum);
 }
 
+function makeSq () {
+    pixel = document.createElement("div");
+    pixel.classList.add("pixel");
+    let pixelSize = 100/sqNum;
+    pixel.style.flex = `1 0 ${pixelSize}%`;
+    pixel.style.height = `${pixelSize}%`;
+    pad.appendChild(pixel);
+    console.log("Size of pixel:", pixelSize);
+}
 
 function populate () {
     getSqNum();
-    for (let sq =0; sq < (sqNum**2); sq++) {
+    pad.innerHTML="";
+    for (let i=0; i < (sqNum**2); i++) {
         makeSq();
-    }
-};
+    };
+}
+
+function rst () {
+    let pixels = document.querySelectorAll(".pixel");
+    pixels.forEach(function(pixel) {
+            clearColorClasses(pixel);
+            pixel.classList.add("activeWht");
+    });
+}
 
 
-populate();
+function clearColorClasses(pixel) {
+    pixel.classList.remove("activeBlk", "activeBlu", "activeRed", "activeWht");
+}
+
+function applyColor (colorClass) {
+    let pixels = document.querySelectorAll(".pixel");
+    pixels.forEach(function(pixel) {
+        pixel.addEventListener("mouseover", function () {
+            clearColorClasses(pixel);
+            pixel.classList.add(colorClass);
+    });
+    });
+}
+
+function black () {
+    applyColor("activeBlk");
+}
+
+function blue () {
+    applyColor("activeBlu");
+}
+
+function red () {
+    applyColor("activeRed");
+}
+
+
+setSize.addEventListener("click", populate);
+reset.addEventListener("click", rst);
+blk.addEventListener("click", black);
+blu.addEventListener("click", blue);
+rd.addEventListener("click", red);
